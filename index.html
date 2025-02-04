@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Pixelify+Sans:wght@400..700&family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="mobile-view">
+        <div id="mobile-paw">
+            <img src="Vector.svg" alt="" srcset="">
+        </div>
+        <h3>Trying to squeeze it onto a phone? That’s like watching a blockbuster on a postage stamp. Hop onto a bigger screen for the full experience!</h3>
+    </div>
+    <div id="main">
+        <div id="authContainer" class="auth-container">
+            <h2>Chat-Paw App</h2>
+            <button onclick="signInWithGoogle()" class="google-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+            </button>
+            <div class="auth-divider">
+                <span>or</span>
+            </div>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <div id="button-container">
+                <button onclick="login()">Login</button>
+                <button onclick="signup()" style="background: transparent; color: var(--primary-color); border: 1px solid var(--primary-color);">Sign Up</button>
+            </div>
+        </div>
+        <div class="container">
+            <div id="paw">
+                <img src="Vector.svg" alt="" srcset="">
+            </div>
+            
+
+            <!-- Rest of the HTML remains the same -->
+            <div class="chat-container" id="chatContainer" style="display: none;">
+                <div class="sidebar">
+                    <div id="logo-container">
+                        <img src="logo.svg" alt="" srcset="">
+                        <h2>Chat App</h2>
+                    </div>
+                    
+                    <!-- Add this new section -->
+                    <div class="search-container">
+                        <input type="text" id="userSearchInput" placeholder="Search users..." class="user-search-input">
+                    </div>
+                    <div id="usersList" class="users-list">
+                        <!-- Users will be listed here -->
+                    </div>
+                    <div class="user-info">
+                        <div class="user-avatar">
+                            <img src="avtar.svg" alt="" srcset="">
+                        </div>
+                        <div>
+                            <div class="user-email" id="userEmail"></div>
+                            <button onclick="logout()" class="logout-btn">Logout</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-area">
+                    <div class="chat-header">
+                        <div id="logo-name">
+                            <p>Messages</p>
+                        </div>
+                        <!-- Add this new element -->
+                        <div id="currentChatUser" class="current-chat-user"></div>
+                    </div>
+                    <div id="messages" class="messages"></div>
+                    <div class="message-input-container">
+                        <input type="text" id="messageInput" placeholder="Type a message...">
+                        <!-- <button onclick="sendMessage()">
+                            <img src="Send.svg" alt="" srcset="">
+                        </button> -->
+                        <button onclick="sendMessage()">
+                            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.65462 10.3442C8.0575 8.86056 9.5535 5.146 10.6672 5.146C12.0037 5.146 13.4888 8.52437 13.4888 8.52437M3.20513 17.0631L6.57112 18.1892M3.90431 23.78L6.69487 22.0626M3.09375 20.2559H6.69487" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.8181 18.5859C12.6128 18.5859 13.257 17.9416 13.257 17.1469C13.257 16.3522 12.6128 15.708 11.8181 15.708C11.0234 15.708 10.3792 16.3522 10.3792 17.1469C10.3792 17.9416 11.0234 18.5859 11.8181 18.5859Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.5 27.8547H19.1029C27.2456 27.8547 27.8396 21.4932 27.8396 19.1172V16.7474C27.8396 9.07972 21.9987 8.5249 18.731 8.5249H14.2691C11.0014 8.5249 5.1604 9.07903 5.1604 16.7474V19.1179C5.1604 21.4939 5.7544 27.8547 13.8972 27.8547H16.5Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M25.3454 10.3442C24.9425 8.86056 23.4465 5.146 22.3327 5.146C20.9962 5.146 19.5112 8.52437 19.5112 8.52437M29.7949 17.0631L26.4289 18.1892M29.0957 23.78L26.3051 22.0626M29.9062 20.2559H26.3051" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21.1819 18.5859C21.9766 18.5859 22.6208 17.9416 22.6208 17.1469C22.6208 16.3522 21.9766 15.708 21.1819 15.708C20.3872 15.708 19.7429 16.3522 19.7429 17.1469C19.7429 17.9416 20.3872 18.5859 21.1819 18.5859Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16.9235 20.6092L18.106 19.0376C18.1654 18.9589 18.2017 18.8653 18.2107 18.7672C18.2197 18.669 18.2012 18.5703 18.1572 18.4821C18.1132 18.394 18.0454 18.3198 17.9616 18.2681C17.8777 18.2163 17.7811 18.189 17.6825 18.1892H15.3175C15.219 18.189 15.1223 18.2163 15.0385 18.2681C14.9546 18.3198 14.8869 18.394 14.8428 18.4821C14.7988 18.5703 14.7803 18.669 14.7893 18.7672C14.7984 18.8653 14.8346 18.9589 14.894 19.0376L16.0765 20.6092C16.1258 20.675 16.1898 20.7283 16.2633 20.7651C16.3368 20.8018 16.4178 20.821 16.5 20.821C16.5822 20.821 16.6633 20.8018 16.7368 20.7651C16.8103 20.7283 16.8742 20.675 16.9235 20.6092Z" stroke="black" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                                <span class="now">now!</span>
+                                <span class="play">send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
